@@ -5,7 +5,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class DemoApplicationTests {
-	private String nom = 12;
 	
 	@Test
 	void contextLoads() {
