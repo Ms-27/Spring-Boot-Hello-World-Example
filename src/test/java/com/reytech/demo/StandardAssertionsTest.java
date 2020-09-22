@@ -19,7 +19,7 @@ class StandardAssertionsTest {
     @Test
     void standardAssertions() {
     	
-        assertEquals(2, 2);
+        assertEquals(2, 5);
         assertNotEquals(2, 3);
         
         // affiche le message si le test ne passe pas
