@@ -9,6 +9,7 @@ class DemoApplicationTests {
 	@Test
 	void contextLoads() {
 		private String nom = 12;
+		
 	}
 
 }
