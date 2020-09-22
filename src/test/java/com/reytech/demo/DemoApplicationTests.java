@@ -5,7 +5,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class DemoApplicationTests {
-//modif pour build	
+//modif pour build in jenkins	
 	@Test
 	void contextLoads() {
 	}
