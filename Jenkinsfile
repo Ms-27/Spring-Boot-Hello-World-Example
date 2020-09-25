@@ -128,6 +128,17 @@ pipeline {
           }
         }
         
+        stage('Checkout Selenium') {
+            steps {
+                echo "-=- Checkout project -=-"
+                git url: 'https://github.com/Ms-27/example-springboot-automation-test-selenium.git'
+            }
+        }
+        stage('Selenium Test Job') {
+            steps {
+                 build job: '06-projet-verify' 
+            }
+        }
     }
 }
 
