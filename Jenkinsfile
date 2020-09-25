@@ -59,7 +59,7 @@ pipeline {
         }	
         stage('Quality Analysis Sonarqube') {
             environment {
-                SCANNER_HOME = tool 'SonarQubeScanner'
+                SCANNER_HOME = tool 'sonarqube'
                 ORGANIZATION = "EQL"
                 PROJECT_NAME = "SpringBootProject_2"
             }
