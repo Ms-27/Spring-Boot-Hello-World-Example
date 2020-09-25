@@ -75,6 +75,59 @@ pipeline {
             }
         }
       
+        stage('Continuous delivery') {
+          steps {
+             script {
+              sshPublisher(
+               continueOnError: false, failOnError: true,
+               publishers: [
+                sshPublisherDesc(
+                 configName: "VM3",
+                 verbose: true,
+                 transfers: [
+                  sshTransfer(
+                   sourceFiles: "target/*.jar",
+                   removePrefix: "/target",
+                   remoteDirectory: "",
+                   execCommand: """
+                    sudo mv demo-0.0.1-SNAPSHOT.jar /home/vagrant/project;
+                    cd project;
+                    sudo docker build -t springbootappvpl. ;
+                    docker tag springbootappvpl ms27ms27/springbootappvpl:1.0
+                    docker push ms27ms27/springbootappvpl:1.0 """
+                  )
+                 ])
+               ])
+             }
+          }
+        }
+        
+        stage('Continuous deployment') {
+          steps {
+             script {
+              sshPublisher(
+               continueOnError: false, failOnError: true,
+               publishers: [
+                sshPublisherDesc(
+                 configName: "VM3",
+                 verbose: true,
+                 transfers: [
+                  sshTransfer(
+                   sourceFiles: "",
+                   removePrefix: "",
+                   remoteDirectory: "",
+                   execCommand: """
+                    sudo docker stop \$(docker ps -a -q);
+                    sudo docker rm \$(docker ps -a -q);
+                    sudo docker rmi -f \$(docker images -a -q);
+                    sudo docker run -d -p 8080:8080 ms27ms27/springbootappvpl:1.0; """
+                  )
+                 ])
+               ])
+             }
+          }
+        }
+        
     }
 }
 
