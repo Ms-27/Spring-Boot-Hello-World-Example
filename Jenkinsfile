@@ -92,7 +92,7 @@ pipeline {
                    execCommand: """
                     sudo mv demo-0.0.1-SNAPSHOT.jar /home/vagrant/project;
                     cd project;
-                    sudo docker build -t springbootappvpl. ;
+                    sudo docker build -t springbootappvpl . ;
                     docker tag springbootappvpl ms27ms27/springbootappvpl:1.0
                     docker push ms27ms27/springbootappvpl:1.0 """
                   )
